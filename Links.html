@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindless Self Indulgence - Источники</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* МЕНЮ НАВИГАЦИИ */
+        .main-nav {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff1493;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .main-nav a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* АКТИВНАЯ ССЫЛКА (РАЗДЕЛ, В КОТОРОМ НАХОДИМСЯ) */
+        .main-nav a.active {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: #ff1493;
+            margin: 40px 0 60px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* СПИСОК ИСТОЧНИКОВ */
+        .sources-list {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+        }
+        
+        .source-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 25px;
+            border-left: 4px solid #ff1493;
+            transition: all 0.3s;
+        }
+        
+        .source-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+        
+        .source-number {
+            display: inline-block;
+            background-color: #ff1493;
+            color: #000;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: 700;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .source-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            word-break: break-all;
+            transition: color 0.3s;
+        }
+        
+        .source-link:hover {
+            color: #ff1493;
+            text-decoration: underline;
+        }
+        
+        /* РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ */
+        .divider {
+            border: none;
+            height: 2px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #ff1493, transparent);
+            margin: 50px auto;
+        }
+        
+        /* АВТОРСКИЕ ПРАВА */
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-weight: 300;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3rem;
+            }
+            
+            .main-nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .main-nav {
+                padding: 15px 0;
+            }
+            
+            .main-nav a {
+                display: inline-block;
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            
+            .source-item {
+                padding: 20px;
+            }
+            
+            .source-link {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .main-nav {
+                padding: 12px 0;
+            }
+            
+            .main-nav a {
+                display: block;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            
+            .divider {
+                width: 80%;
+            }
+            
+            .source-item {
+                padding: 15px;
+            }
+            
+            .source-number {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 1rem;
+                margin-right: 10px;
+            }
+            
+            .source-link {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- МЕНЮ НАВИГАЦИИ -->
+    <nav class="main-nav">
+        <a href="index.html">Главная</a> |
+        <a href="Info.html">Общая информация</a> |
+        <a href="History.html">История</a> |
+        <a href="Film.html">Фильмография</a> |
+        <a href="Disc.html">Дискография</a> |
+        <a href="Links.html" class="active">Источники</a>
+		<a href="alb.html">Заказать альбом</a> |
+		<a href="concon.html">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+        <h1 class="page-title">ИСТОЧНИКИ</h1>
+        
+        <!-- СПИСОК ИСТОЧНИКОВ -->
+        <div class="sources-list">
+            <!-- Источник 1 -->
+            <div class="source-item">
+                <span class="source-number">1</span>
+                <a href="https://genius.com/artists/Mindless-self-indulgence/albums" 
+                   class="source-link" 
+                   target="_blank">
+                   https://genius.com/artists/Mindless-self-indulgence/albums
+                </a>
+            </div>
+            
+            <!-- Источник 2 -->
+            <div class="source-item">
+                <span class="source-number">2</span>
+                <a href="https://deziiign.com/project/dbc1918f1e6d4da2a402511b13a9767b" 
+                   class="source-link" 
+                   target="_blank">
+                   https://deziiign.com/project/dbc1918f1e6d4da2a402511b13a9767b
+                </a>
+            </div>
+            
+            <!-- Источник 3 -->
+            <div class="source-item">
+                <span class="source-number">3</span>
+                <a href="https://ru.m.wikipedia.org/wiki/%D0%9B%D0%B8%D0%BD-%D0%97" 
+                   class="source-link" 
+                   target="_blank">
+                   https://ru.m.wikipedia.org/wiki/%D0%9B%D0%B8%D0%BD-%D0%97
+                </a>
+            </div>
+            
+            <!-- Источник 4 -->
+            <div class="source-item">
+                <span class="source-number">4</span>
+                <a href="https://ru.wikipedia.org/wiki/Mindless_Self_Indulgence" 
+                   class="source-link" 
+                   target="_blank">
+                   https://ru.wikipedia.org/wiki/Mindless_Self_Indulgence
+                </a>
+            </div>
+            
+            <!-- Источник 5 -->
+            <div class="source-item">
+                <span class="source-number">5</span>
+                <a href="https://dtf.ru/music/614423-mindless-self-indulgence-tight" 
+                   class="source-link" 
+                   target="_blank">
+                   https://dtf.ru/music/614423-mindless-self-indulgence-tight
+                </a>
+            </div>
+            
+            <!-- Источник 6 -->
+            <div class="source-item">
+                <span class="source-number">6</span>
+                <a href="https://msi.fandom.com/wiki/Mindless_Self_Indulgence" 
+                   class="source-link" 
+                   target="_blank">
+                   https://msi.fandom.com/wiki/Mindless_Self_Indulgence
+                </a>
+            </div>
+            
+            <!-- Источник 7 -->
+            <div class="source-item">
+                <span class="source-number">7</span>
+                <a href="https://ru.wikipedia.org/wiki/Дискография_Mindless_Self_Indulgence" 
+                   class="source-link" 
+                   target="_blank">
+                   https://ru.wikipedia.org/wiki/Дискография_Mindless_Self_Indulgence
+                </a>
+            </div>
+            
+            <!-- Источник 8 -->
+            <div class="source-item">
+                <span class="source-number">8</span>
+                <a href="https://mindlessselfindulgence.com/music/" 
+                   class="source-link" 
+                   target="_blank">
+                   https://mindlessselfindulgence.com/music/
+                </a>
+            </div>
+            
+            <!-- Источник 9 -->
+            <div class="source-item">
+                <span class="source-number">9</span>
+                <a href="https://www.concertarchives.org/bands/mindless-self-indulgence" 
+                   class="source-link" 
+                   target="_blank">
+                   https://www.concertarchives.org/bands/mindless-self-indulgence
+                </a>
+            </div>
+            
+            <!-- Источник 10 -->
+            <div class="source-item">
+                <span class="source-number">10</span>
+                <a href="https://ru.ruwiki.ru/wiki/Mindless_Self_Indulgence" 
+                   class="source-link" 
+                   target="_blank">
+                   https://ru.ruwiki.ru/wiki/Mindless_Self_Indulgence
+                </a>
+            </div>
+            
+            <!-- Источник 11 -->
+            <div class="source-item">
+                <span class="source-number">11</span>
+                <a href="https://shop.mindlessselfindulgence.com/" 
+                   class="source-link" 
+                   target="_blank">
+                   https://shop.mindlessselfindulgence.com/
+                </a>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ -->
+        <hr class="divider">
+
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <footer class="copyright">
+            <p>&copy; Все права защищены. Е. С. Глухова, БЭР2302. 2025.</p>
+        </footer>
+    </div>
+</body>
+</html>

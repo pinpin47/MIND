@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindless Self Indulgence - Главная</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* МЕНЮ НАВИГАЦИИ */
+        .main-nav {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff1493;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .main-nav a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* АКТИВНАЯ ССЫЛКА (РАЗДЕЛ, В КОТОРОМ НАХОДИМСЯ) */
+        .main-nav a.active {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        /* ГЛАВНАЯ СЕКЦИЯ С ФОНОМ */
+        .hero-section {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://avatars.mds.yandex.net/i?id=928112075091f65152d4c67d3470e5a2_l-4824750-images-thumbs&n=13');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* ОСНОВНОЙ ЗАГОЛОВОК - БЕЗ ФОНА, ТОЛЬКО ТЕНЬ */
+        .main-title {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: #ff1493;
+            text-shadow: 
+                5px 5px 0px #000,
+                10px 10px 20px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            padding: 20px;
+        }
+        
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .content {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .intro-text {
+            text-align: center;
+            font-size: 19px;
+            margin: 40px 0;
+            line-height: 1.8;
+            font-weight: 300;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #ff1493;
+        }
+        
+        .intro-text em {
+            color: #ff1493;
+            font-style: italic;
+            font-weight: 600;
+        }
+        
+        /* РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ */
+        .divider {
+            border: none;
+            height: 2px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #ff1493, transparent);
+            margin: 50px auto;
+        }
+        
+        /* АВТОРСКИЕ ПРАВА */
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-weight: 300;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1024px) {
+            .main-title {
+                font-size: 4rem;
+                text-shadow: 
+                    4px 4px 0px #000,
+                    8px 8px 15px rgba(0, 0, 0, 0.8);
+            }
+            
+            .main-nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+                text-shadow: 
+                    3px 3px 0px #000,
+                    6px 6px 10px rgba(0, 0, 0, 0.8);
+            }
+            
+            .main-nav {
+                padding: 15px 0;
+            }
+            
+            .main-nav a {
+                display: inline-block;
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            
+            .hero-section {
+                height: 60vh;
+            }
+            
+            .intro-text {
+                font-size: 17px;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+                text-shadow: 
+                    2px 2px 0px #000,
+                    4px 4px 8px rgba(0, 0, 0, 0.8);
+            }
+            
+            .main-nav {
+                padding: 12px 0;
+            }
+            
+            .main-nav a {
+                display: block;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            
+            .hero-section {
+                height: 50vh;
+            }
+            
+            .intro-text {
+                font-size: 16px;
+                padding: 15px;
+            }
+            
+            .divider {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- МЕНЮ НАВИГАЦИИ -->
+    <nav class="main-nav">
+        <a href="index.html" class="active">Главная</a> |
+        <a href="Info.html">Общая информация</a> |
+        <a href="History.html">История</a> |
+        <a href="Film.html">Фильмография</a> |
+        <a href="Disc.html">Дискография</a> |
+        <a href="Links.html">Источники</a> |
+		<a href="alb.html">Заказать альбом</a> |
+		<a href="concon.html">Контакты</a>
+    </nav>
+
+    <!-- ГЛАВНАЯ СЕКЦИЯ -->
+    <div class="hero-section">
+        <div>
+            <h1 class="main-title">Mindless Self Indulgence</h1>
+        </div>
+    </div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        <p class="intro-text">
+            На этом сайте вы сможете узнать об истории и особенностях группы, а также познакомиться с их дискографией. 
+            <em>Это учебный сайт демонстрационного содержания.</em> Его цель - отработка технологии разметки гипертекстовых 
+            документов с помощью языка HTML. Более полную информацию о группе <em>Mindless Self Indulgence</em> вы найдете 
+            на других сайтах. Приносим свои извинения.
+        </p>
+
+        <!-- РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ -->
+        <hr class="divider">
+
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <footer class="copyright">
+            <p>&copy; Все права защищены. Е. С. Глухова, БЭР2302. 2025.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindless Self Indulgence - Заказать альбом</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+        
+        /* МЕНЮ НАВИГАЦИИ */
+        .main-nav {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff1493;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .main-nav a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* АКТИВНАЯ ССЫЛКА (РАЗДЕЛ, В КОТОРОМ НАХОДИМСЯ) */
+        .main-nav a.active {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: #ff1493;
+            margin: 40px 20px 60px 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* КОНТЕЙНЕР ДЛЯ ФОРМЫ */
+        .form-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #fff;
+            border-radius: 10px;
+            border: 2px solid #ff1493;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .form-embed {
+            width: 100%;
+            height: 1800px;
+            border: none;
+            display: block;
+            margin: 0;
+            padding: 0;
+            pointer-events: auto;
+        }
+        
+        /* РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ */
+        .divider {
+            border: none;
+            height: 2px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #ff1493, transparent);
+            margin: 50px auto;
+        }
+        
+        /* АВТОРСКИЕ ПРАВА */
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-weight: 300;
+            width: 100%;
+        }
+        
+        /* ПРОСТРАНСТВО ПЕРЕД ФОРМОЙ */
+        .spacer {
+            height: 40px;
+        }
+        
+        /* ИНФОРМАЦИЯ О ФОРМЕ */
+        .form-info {
+            text-align: center;
+            color: #aaa;
+            font-size: 16px;
+            margin: 20px auto 40px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1200px) {
+            .form-container {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3rem;
+                margin: 30px 15px 40px 15px;
+            }
+            
+            .main-nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+            
+            .form-container {
+                max-width: 98%;
+            }
+            
+            .form-embed {
+                height: 1700px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .form-embed {
+                height: 1600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+                margin: 25px 10px 35px 10px;
+            }
+            
+            .main-nav {
+                padding: 15px 0;
+            }
+            
+            .main-nav a {
+                display: inline-block;
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            
+            .form-embed {
+                height: 1500px;
+            }
+            
+            .form-container {
+                border-radius: 8px;
+                max-width: 99%;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .form-embed {
+                height: 1400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+                margin: 20px 5px 30px 5px;
+            }
+            
+            .main-nav {
+                padding: 12px 0;
+            }
+            
+            .main-nav a {
+                display: block;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            
+            .divider {
+                width: 80%;
+            }
+            
+            .form-embed {
+                height: 1300px;
+            }
+            
+            .form-container {
+                border-radius: 5px;
+                max-width: 100%;
+                border: 1px solid #ff1493;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .form-embed {
+                height: 1200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- МЕНЮ НАВИГАЦИИ -->
+    <nav class="main-nav">
+        <a href="index.html">Главная</a> |
+        <a href="Info.html">Общая информация</a> |
+        <a href="History.html">История</a> |
+        <a href="Film.html">Фильмография</a> |
+        <a href="Disc.html">Дискография</a> |
+        <a href="Links.html">Источники</a> |
+        <a href="alb.html">Заказать альбом</a> |
+		<a href="concon.html">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+        <h1 class="page-title">ЗАКАЗАТЬ АЛЬБОМ</h1>
+        
+        <!-- ИНФОРМАЦИЯ О ФОРМЕ -->
+        <div class="form-info">
+            Используйте форму ниже для заказа альбома. Заполните все необходимые поля и нажмите кнопку "Отправить".
+        </div>
+        
+        <!-- ПРОСТРАНСТВО ПЕРЕД ФОРМОЙ -->
+        <div class="spacer"></div>
+        
+        <!-- КОНТЕЙНЕР С ФОРМОЙ -->
+        <div class="form-container">
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdn-UFWWDfdA6wAsX3jcOSdE7QuI1_R13tFBSkpo_B1sNZ6Eg/viewform?embedded=true" 
+                class="form-embed" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                title="Форма заказа альбома Mindless Self Indulgence">
+                Загрузка формы... Пожалуйста, подождите.
+            </iframe>
+        </div>
+
+        <!-- РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ -->
+        <hr class="divider">
+
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <footer class="copyright">
+            <p>&copy; Все права защищены. Е. С. Глухова, БЭР2302. 2025.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Улучшение взаимодействия с формой
+        document.addEventListener('DOMContentLoaded', function() {
+            const formIframe = document.querySelector('.form-embed');
+            
+            // Добавляем атрибут allow для разрешения всех необходимых действий
+            formIframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen');
+            
+            // Устанавливаем фокус на iframe для лучшей работы клавиатуры
+            formIframe.addEventListener('load', function() {
+                try {
+                    // Пытаемся установить фокус на iframe
+                    this.contentWindow.focus();
+                } catch (e) {
+                    console.log('Форма загружена и готова к использованию');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

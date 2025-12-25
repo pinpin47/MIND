@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindless Self Indulgence - Дискография</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* МЕНЮ НАВИГАЦИИ */
+        .main-nav {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff1493;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .main-nav a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* АКТИВНАЯ ССЫЛКА (РАЗДЕЛ, В КОТОРОМ НАХОДИМСЯ) */
+        .main-nav a.active {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: #ff1493;
+            margin: 40px 0 60px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* КНОПКА СКАЧАТЬ */
+        .download-button {
+            display: block;
+            width: 300px;
+            margin: 30px auto 50px auto;
+            background-color: #ff1493;
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid #ff1493;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+        
+        .download-button:hover {
+            background-color: #000;
+            color: #ff1493;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+        }
+        
+        .highlight {
+            color: #ff1493;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            color: #ff1493;
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            font-weight: 700;
+            border-bottom: 2px solid #ff1493;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        
+        /* СЕТКА АЛЬБОМОВ */
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .album-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid #333;
+        }
+        
+        .album-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.2);
+        }
+        
+        .album-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(255, 20, 147, 0.1);
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+        }
+        
+        .album-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+            border: 2px solid #333;
+        }
+        
+        .album-basic-info {
+            flex: 1;
+        }
+        
+        .album-name {
+            color: #ff1493;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .album-artist {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .album-year {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+        
+        .toggle-arrow {
+            color: #ff1493;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .album-item.open .toggle-arrow {
+            transform: rotate(180deg);
+        }
+        
+        /* СКРЫВАЕМЫЙ ТРЕКЛИСТ */
+        .tracklist {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .album-item.open .tracklist {
+            max-height: 1000px;
+        }
+        
+        .tracklist-content {
+            padding: 20px;
+        }
+        
+        .tracklist-title {
+            color: #ff1493;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .track {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .track:last-child {
+            border-bottom: none;
+        }
+        
+        .track-number {
+            color: #ff1493;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        /* РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ */
+        .divider {
+            border: none;
+            height: 2px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #ff1493, transparent);
+            margin: 50px auto;
+        }
+        
+        /* АВТОРСКИЕ ПРАВА */
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-weight: 300;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3rem;
+            }
+            
+            .main-nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+            
+            .albums-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 25px;
+            }
+            
+            .download-button {
+                width: 280px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .main-nav {
+                padding: 15px 0;
+            }
+            
+            .main-nav a {
+                display: inline-block;
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .albums-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .download-button {
+                width: 250px;
+                font-size: 1.1rem;
+                padding: 12px 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .main-nav {
+                padding: 12px 0;
+            }
+            
+            .main-nav a {
+                display: block;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .divider {
+                width: 80%;
+            }
+            
+            .album-header {
+                padding: 12px;
+            }
+            
+            .album-image {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .album-name {
+                font-size: 1rem;
+            }
+            
+            .tracklist-content {
+                padding: 15px;
+            }
+            
+            .download-button {
+                width: 220px;
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- МЕНЮ НАВИГАЦИИ -->
+    <nav class="main-nav">
+        <a href="index.html">Главная</a> |
+        <a href="Info.html">Общая информация</a> |
+        <a href="History.html">История</a> |
+        <a href="Film.html">Фильмография</a> |
+        <a href="Disc.html" class="active">Дискография</a> |
+        <a href="Links.html">Источники</a> |
+		<a href="alb.html">Заказать альбом</a> |
+		<a href="concon.html">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+        <h1 class="page-title">ДИСКОГРАФИЯ</h1>
+        
+        <!-- КНОПКА СКАЧАТЬ -->
+        <a href="https://rus.hitmotop.com/search?q=mindless%20self%20indulgence" 
+           class="download-button" 
+           target="_blank">
+           Скачать песни MSI
+        </a>
+
+        <!-- ВСЕ АЛЬБОМЫ MSI -->
+        <h2 class="section-title">ВСЕ АЛЬБОМЫ MSI</h2>
+        
+        <!-- СЕТКА АЛЬБОМОВ -->
+        <div class="albums-grid" id="albumsGrid">
+            <!-- Альбомы будут добавлены через JavaScript -->
+        </div>
+
+        <!-- РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ -->
+        <hr class="divider">
+
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <footer class="copyright">
+            <p>&copy; Все права защищены. Е. С. Глухова, БЭР2302. 2025.</p>
+        </footer>
+    </div>
+
+    <!-- JAVASCRIPT ДЛЯ РАБОТЫ С АЛЬБОМАМИ -->
+    <script>
+        // Данные альбомов
+        const albums = [
+            {
+                id: 1,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F5c32d91be3764ce5f4f6cf81b3bed1bb.1000x1000x1.png",
+                name: "MSI B-SIDES vol.1",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск июнь 15, 2024",
+                tracks: [
+                    "1. 3 S'",
+                    "2. Sex For Homework",
+                    "3. Eat Those Words (Ft. Roman Polanski)",
+                    "4. Seven Minutes in Heaven",
+                    "5. Frying Pan",
+                    "6. Prove Me Wrong (Ft. Chantal Claret)",
+                    "7. Rip Off",
+                    "8. Disappoint",
+                    "9. Last Gay Song",
+                    "10. Genius",
+                    "11. My World",
+                    "12. Lush",
+                    "13. You Will See Just What I See"
+                ]
+            },
+            {
+                id: 2,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F78ea87c225f3a1fde812bc3350b8f5c3.1000x1000x1.png",
+                name: "PINK",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск сентябрь 18, 2015",
+                tracks: [
+                    "1. Personal Jesus (Ft. Chantal Claret)",
+                    "2. This Hurts",
+                    "3. Be Like Superman",
+                    "4. Memory Of Heaven",
+                    "5. Vanity",
+                    "6. Married Alive",
+                    "7. Girls On Film",
+                    "8. 5TR82HE11",
+                    "9. Envy",
+                    "10. Device",
+                    "11. Out Of My Minds",
+                    "12. Darling Young Boyz",
+                    "13. For The Love Of God",
+                    "14. Slim",
+                    "15. Do Unto Others",
+                    "16. Bed Of Roses",
+                    "17. Unsociable",
+                    "18. Do Unto Others, Pt. 2",
+                    "19. Angry Boy"
+                ]
+            },
+            {
+                id: 3,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F4a72bf05addee6ab9b6455d0e247ed0e.640x640x1.jpg",
+                name: "Fuck Machine",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск январь 14, 2014",
+                tracks: [
+                    "1. Fuck Machine (LJU Remix)",
+                    "2. Fuck Machine (Scandinavian Cock Mix)",
+                    "3. Fuck Machine (Mustard Pimp Remix)",
+                    "4. Fuck Machine (KMFDM Remix)",
+                    "5. Fuck Machine (Flock of Jimmy's Remix)",
+                    "6. Fuck Machine (Blush Response Remix)",
+                    "7. Fuck Machine (Chantal Loves Jimmy Remix)",
+                    "8. Fuck Machine (Combichrist Remix)",
+                    "9. Fuck Machine (Coming Soon to a Theater Near You)",
+                    "10. Jack You Up (Black Lipstick Remix)",
+                    "11. Fuck Machine",
+                    "12. Fuck Machine (Acapella Do Your Own Fucking Remix Asshole)"
+                ]
+            },
+            {
+                id: 4,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fca6b7c23139c84f6edcb42bb6e9e1c22.700x700x1.jpg",
+                name: "It Gets Worse",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск сентябрь 3, 2013",
+                tracks: [
+                    "1. It Gets Worse",
+                    "2. Eat Those Words (Ft. Roman Polanski)",
+                    "3. You Will See Just What I See"
+                ]
+            },
+            {
+                id: 5,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F31d11219c312cf3c22341b8863d60a6c.1000x1000x1.png",
+                name: "How I Learned To Stop Giving A Shit And Love Mindless Self Indulgence",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск май 14, 2013",
+                tracks: [
+                    "1. Witness",
+                    "2. Fuck Machine",
+                    "3. It Gets Worse",
+                    "4. I Want to Be Black",
+                    "5. Hey Tomorrow Fuck You and Your Friend Yesterday",
+                    "6. You're No Fun Anymore Mark Trezona",
+                    "7. Ala Mode",
+                    "8. Casio (Ft. Chantal Claret)",
+                    "9. Anonymous",
+                    "10. Kill You All in a Hip Hop Rage (Ft. Chantal Claret)",
+                    "11. Stalkers (Slit My Wrists)",
+                    "12. Jack You Up",
+                    "13. Ass Backwards",
+                    "14. The Logical Song",
+                    "15. I Am Not Here to Make Any Friends",
+                    "16. Sex For Homework",
+                    "17. Last Gay Song",
+                    "18. Angel",
+                    "19. Seven Minutes in Heaven"
+                ]
+            },
+            {
+                id: 6,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fd9d42db8af5af2d68e24e61b09f3287a.575x575x1.jpg",
+                name: "It Gets Worse / Ala Mode",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 2013",
+                tracks: [
+                    "1. It Gets Worse (Clean)",
+                    "2. Ala Mode (Clean)"
+                ]
+            },
+            {
+                id: 7,
+                image: "https://t2.genius.com/unsafe/772x0/https%3A%2F%2Fimages.genius.com%2Fb272bc3eef71f30cab0957f3eb91f749.640x640x1.jpg",
+                name: "Tighter",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск апрель 26, 2011",
+                tracks: [
+                    "1. Grab the Mic",
+                    "2. Bring the Pain",
+                    "3. Mindless Self Indulgence",
+                    "4. Tight",
+                    "5. Diabolical",
+                    "6. Molly",
+                    "7. Tornado",
+                    "8. Daddy",
+                    "9. Pussy All Night",
+                    "10. Apple Country",
+                    "11. Dickface",
+                    "12. Bite Your Rhymes",
+                    "13. Tornado (Recorded Live At CBGB's)",
+                    "14. Ecnegludni Fles Sseldnim",
+                    "15. Jx-47",
+                    "16. Shnooze",
+                    "17. Cake",
+                    "18. I Hate Everyone",
+                    "19. If I Only Didn't Want to F the Ones Who Didnt Want to F Me",
+                    "20. Agents",
+                    "21. Bring the Pain (New Wave) (Ft. Chantal Claret)",
+                    "22. Tornado (Cassingle Version)",
+                    "23. This Isn't Good",
+                    "24. Dickface (Demo)",
+                    "25. Tight 8-Bit",
+                    "26. I Think I Turned 22",
+                    "27. Free as a Birdie"
+                ]
+            },
+            {
+                id: 8,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Ff7870ffe60a0e72c8a94ca3cefa18f0b.500x500x1.png",
+                name: "＜3",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск февраль 14, 2010",
+                tracks: [
+                    "1. 3 S'",
+                    "2. Make Me Cum (Demo)",
+                    "3. Greatest Love Of All (Demo)",
+                    "4. Prove Me Wrong (Ft. Chantal Claret)",
+                    "5. My World (Demo)",
+                    "6. Genius",
+                    "7. Uncle",
+                    "8. Written In Cold Blood"
+                ]
+            },
+            {
+                id: 9,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fe7caced4fa17f1f52663d12c9c7719d9.640x640x1.jpg",
+                name: "Evening Wear/Mark David Chapman",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск январь 20, 2009",
+                tracks: [
+                    "1. Evening Wear (Radio Edit) (Ft. Chantal Claret)",
+                    "2. Written In Cold Blood",
+                    "3. Mark David Chapman (Radio Edit) (Ft. Jimmy Urine's Mom)"
+                ]
+            },
+            {
+                id: 10,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F7aabc807a4a791e6850a6a1e8c3c5b9f.600x600x1.jpg",
+                name: "3 S'",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск апрель 29, 2008",
+                tracks: [
+                    "1. 3 S'",
+                    "2. Lights Out (Demo)"
+                ]
+            },
+            {
+                id: 11,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fdb345d97b4651ce717f01896cf12f9dd.999x999x1.png",
+                name: "If",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск апрель 29, 2008",
+                tracks: [
+                    "1. Never Wanted To Dance",
+                    "2. Evening Wear (Ft. Chantal Claret)",
+                    "3. Lights Out",
+                    "4. Prescription",
+                    "5. Issues",
+                    "6. Get It Up (Ft. Chantal Claret)",
+                    "7. Revenge",
+                    "8. Animal",
+                    "9. Mastermind",
+                    "10. On It (Ft. Chantal Claret)",
+                    "11. Pay For It",
+                    "12. Due",
+                    "13. Money",
+                    "14. Bomb This Track",
+                    "15. Mark David Chapman (Ft. Jimmy Urine's Mom)"
+                ]
+            },
+            {
+                id: 12,
+                image: "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F867c4d60741470beb65b71f97c0b599a.1000x1000x1.jpg",
+                name: "Never Wanted to Dance: The Remixes",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск март 18, 2008",
+                tracks: [
+                    "1. Never Wanted to Dance (Ulrich Wild Voluptuous Metal mix)",
+                    "2. Electro hurtz - mix by combichrist",
+                    "3. Never Wanted to Dance (The Birthday Massacre Pansy mix)",
+                    "4. Never Wanted to Dance (Tommie Sunshine [TSMV] remix)",
+                    "5. Never Wanted to Dance (Spider dub remix)",
+                    "6. Never Wanted to Dance (The Birthday Massacre a cappella mix)"
+                ]
+            },
+            {
+                id: 13,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fd86ff678e89f8a9d894766ee9db434b3.595x595x1.jpg",
+                name: "Mastermind",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск февраль 21, 2008",
+                tracks: [
+                    "1. Mastermind",
+                    "2. Mastermind (Radio Edit)"
+                ]
+            },
+            {
+                id: 14,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fe8761e8f061a3fc7b36265a0d0bf8299.1000x1000x1.png",
+                name: "You'll Rebel To Anything (Expanded and Remastered)",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск январь 22, 2008",
+                tracks: [
+                    "1. Shut Me Up",
+                    "2. Stupid MF",
+                    "3. Straight to Video",
+                    "4. What Do They Know?",
+                    "5. 2 Hookers And An 8 Ball",
+                    "6. Prom",
+                    "7. Bullshit",
+                    "8. Tom Sawyer",
+                    "9. 1989",
+                    "10. You'll Rebel To Anything",
+                    "11. Microphone Commander",
+                    "12. La-Di-Da-Di (Ft. Kenny Muhammad The Human Orchestra)",
+                    "13. Make Me Cum",
+                    "14. Wack! (Live)",
+                    "15. Mic Commander"
+                ]
+            },
+            {
+                id: 15,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F43345ba3161a0a7e98de28f853e2747a.642x642x1.png",
+                name: "Another Mindless Rip-Off",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск декабрь 5, 2006",
+                tracks: [
+                    "1. My World",
+                    "2. Pre-Teen Violence",
+                    "3. Frying Pan",
+                    "4. Lush",
+                    "5. Born To Be Beheaded",
+                    "6. What Do They Know (Mindless Self Indulgence Vs. Julien-K And Chester Bennington) (Ft. Amir Derakh, Anthony Valcic & Ryan Shuck)",
+                    "7. What Do They Know? (BackStabber's Delight Mix)",
+                    "8. What Do They Know? (Hollowboy Extended Pleasure mix) (Ft. HollowBoy)",
+                    "9. What Do They Know? (Maelstrom mix) (Ft. NVN Nation)",
+                    "10. What Do They Know? (The Last Word mix)"
+                ]
+            },
+            {
+                id: 16,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fb8b81fa7d636fb6bc05d1e9e91a5e7e8.640x640x1.jpg",
+                name: "You'll Rebel To Anything (Clean Version)",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск апрель 12, 2005",
+                tracks: [
+                    "1. Shut Me Up (Clean Version)",
+                    "2. 1989 (Clean Version)",
+                    "3. Straight To Video (Clean Version)",
+                    "4. Tom Sawyer (Clean Version)",
+                    "5. You'll Rebel To Anything (Clean Version)",
+                    "6. What Do They Know? (Clean Version)",
+                    "7. Stupid MF (Clean Version)",
+                    "8. 2 H******s And An 8 B*** (Clean Version)",
+                    "9. Prom (Clean Version)",
+                    "10. Bull***t (Clean Version)",
+                    "11. Microphone Commander (Clean Version)"
+                ]
+            },
+            {
+                id: 17,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fbc121e19e34f4bf652357159ff37c0c3.1000x1000x1.png",
+                name: "You'll Rebel to Anything",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск апрель 12, 2005",
+                tracks: [
+                    "1. Shut Me Up",
+                    "2. 1989",
+                    "3. Straight to Video",
+                    "4. Tom Sawyer",
+                    "5. You'll Rebel To Anything",
+                    "6. What Do They Know?",
+                    "7. Stupid MF",
+                    "8. 2 Hookers And An 8 Ball",
+                    "9. Prom",
+                    "10. Bullshit",
+                    "11. La-Di-Da-Di (Ft. Kenny Muhammad The Human Orchestra)",
+                    "12. Disappoint",
+                    "13. Rip Off",
+                    "14. You Will See Just What I See"
+                ]
+            },
+            {
+                id: 18,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F1cae83e4166819c1840caa2914da9483.1000x1000x1.png",
+                name: "Despierta Los Niños",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск октябрь 31, 2003",
+                tracks: [
+                    "1. Wack!",
+                    "2. Brooklyn Hype (Part One)",
+                    "3. Capitol P",
+                    "4. Molly (Live)",
+                    "5. Alienating Our Audience",
+                    "6. Joke"
+                ]
+            },
+            {
+                id: 19,
+                image: "https://images.genius.com/ce17b1d1be78badcc67d0134c2b12358.240x240x1.jpg",
+                name: "Alienating Our Audience",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск октябрь 8, 2002",
+                tracks: [
+                    "1. Tornado",
+                    "2. Thank God",
+                    "3. Two Hookers (Live)",
+                    "4. Revenge",
+                    "5. Molly (Live)",
+                    "6. Like Shit",
+                    "7. Diabolical",
+                    "8. Last Gay Song",
+                    "9. Rip Off",
+                    "10. Panty Shot"
+                ]
+            },
+            {
+                id: 20,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Ff751719eeba9e4b82ea9301fc5891449.700x700x1.jpg",
+                name: "Thank God",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск январь 1, 2002",
+                tracks: [
+                    "1. Thank God",
+                    "2. Clarissa",
+                    "3. Bring the Pain",
+                    "4. Thank God (Radio Edit)"
+                ]
+            },
+            {
+                id: 21,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F02c640b0db343c3ade0e18b9267c7144.478x478x1.jpg",
+                name: "Bitches / Molly",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск апрель 4, 2000",
+                tracks: [
+                    "1. Bitches (Michael Patterson's SubBass club mix)",
+                    "2. Bitches (Kid Rock's Cock Rock Remix)",
+                    "3. Bitches (µ-Ziq Mix)",
+                    "4. Bitches (DJ Cam Mix)",
+                    "5. Bitches (Rhys Fulber Mix)",
+                    "6. Bitches (State of Bengal Mix)",
+                    "7. 777-Bitches",
+                    "8. Molly",
+                    "9. Molly (Pull's kHz Mix)",
+                    "10. Molly (Madgroove's CircusJungle Mix)",
+                    "11. Molly (Side 3's Industrial Dub Mix)"
+                ]
+            },
+            {
+                id: 22,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F0c417a8057f548e1a0ea6aff422a695e.1000x1000x1.png",
+                name: "Frankenstein Girls Will Seem Strangely Sexy",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск февраль 22, 2000",
+                tracks: [
+                    "1. Backmask",
+                    "2. Bitches",
+                    "3. Boomin'",
+                    "4. Clarissa",
+                    "5. Cocaine and Toupees",
+                    "6. Dicks Are for My Friends",
+                    "7. F",
+                    "8. Faggot",
+                    "9. Futures",
+                    "10. Golden I",
+                    "11. Harry Truman",
+                    "12. Holy Shit",
+                    "13. I Hate Jimmy Page",
+                    "14. I'm Your Problem Now",
+                    "15. J",
+                    "16. Keepin' Up with the Kids",
+                    "17. Kick the Bucket",
+                    "18. Kill the Rock",
+                    "19. Last Time I Tried to Rock Your World",
+                    "20. London Bridge",
+                    "21. M",
+                    "22. Masturbates",
+                    "23. Planet of the Apes",
+                    "24. Played",
+                    "25. Ready for Love",
+                    "26. Royally Fucked",
+                    "27. Seven-Eleven",
+                    "28. Step Up, Ghettoblaster",
+                    "29. Whipstickagostop",
+                    "30. Z"
+                ]
+            },
+            {
+                id: 23,
+                image: "https://t2.genius.com/unsafe/361x300/https%3A%2F%2Fimages.genius.com%2F5a58a3d6df98e3e358b6a115253f0d35.600x499x1.jpg",
+                name: "Planet Of The Apes",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 2000",
+                tracks: [
+                    "1. Planet of the Apes (Amended Version)",
+                    "2. Planet of the Apes (Call-Out Hook #1)",
+                    "3. Planet of the Apes (Call-Out Hook #2)",
+                    "4. Audio Bio"
+                ]
+            },
+            {
+                id: 24,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Ffd310634b8f324964188077554297354.1000x1000x1.png",
+                name: "Tight",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск апрель 20, 1999",
+                tracks: [
+                    "1. Grab the Mic",
+                    "2. Bring the Pain",
+                    "3. Mindless Self Indulgence",
+                    "4. Tight",
+                    "5. Diabolical",
+                    "6. Molly",
+                    "7. Tornado",
+                    "8. Daddy",
+                    "9. Pussy All Night",
+                    "10. Apple Country",
+                    "11. Dickface",
+                    "12. Bite Your Rhymes",
+                    "13. Tornado (Recorded Live At CBGB's)",
+                    "14. Ecnegludni Fles Sseldnim",
+                    "15. Jx-47"
+                ]
+            },
+            {
+                id: 25,
+                image: "https://t2.genius.com/unsafe/413x300/https%3A%2F%2Fimages.genius.com%2Ff048dfbfafd810d8f8d07f0aa498ac73.600x436x1.jpg",
+                name: "Unmastered Studio Bootlegs 1/20/99",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск январь 20, 1999",
+                tracks: [
+                    "1. Pussy All Night",
+                    "2. Dickface",
+                    "3. Bring the Pain",
+                    "4. Mindless Self Indulgence",
+                    "5. Agents",
+                    "6. Ecnegludni Fles Sseldnim",
+                    "7. Panty Shot",
+                    "8. Jx-47",
+                    "9. Tornado (Cassingle Version)"
+                ]
+            },
+            {
+                id: 26,
+                image: "https://t2.genius.com/unsafe/300x467/https%3A%2F%2Fimages.genius.com%2Fd2353f9892d1a5319bb892822527c3f7.385x599x1.jpg",
+                name: "Bring The Pain / Tight",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1999",
+                tracks: [
+                    "1. Bring the Pain",
+                    "2. Tight"
+                ]
+            },
+            {
+                id: 27,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F970d3d50a248057ed0ec1dea77684f43.576x576x1.jpg",
+                name: "Untitled",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1999",
+                tracks: [
+                    "1. Royally Fucked Lyrics",
+                    "2. Bitches Lyrics",
+                    "3. Faggot"
+                ]
+            },
+            {
+                id: 28,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Ff22b6a9db54f76255944bf45784a0606.371x371x1.jpg",
+                name: "Unmastered",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1999",
+                tracks: [
+                    "1. Bitches",
+                    "2. Clarissa",
+                    "3. Seven-Eleven"
+                ]
+            },
+            {
+                id: 29,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Ff68becd5561fce253b76852f2c2d34b0.350x350x1.jpg",
+                name: "Bring the Pain / Tornado",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1999",
+                tracks: [
+                    "1. Bring the Pain (Nicey-Nice for Radio)",
+                    "2. Tornado (Clean and Fresh-Scented for Radio)",
+                    "3. Bring the Pain (Nasty as Hell Version)",
+                    "4. Bring the Acapella",
+                    "5. Tornado (Original Filthy Demo Version)"
+                ]
+            },
+            {
+                id: 30,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F55940a68bfcd5c47b9cadd1d6f51f6b7.593x593x1.jpg",
+                name: "Radio Pussy (All New Non-Bleep Radio Edits)",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1999",
+                tracks: [
+                    "1. Pussy All Night (Radio Edit)",
+                    "2. Tight (Radio Edit)",
+                    "3. Grab The Mic (Clean Version)",
+                    "4. Molly (Clean Version)"
+                ]
+            },
+            {
+                id: 31,
+                image: "https://t2.genius.com/unsafe/772x0/https%3A%2F%2Fimages.genius.com%2F24df1739ba572b535f5a1f414f54a74b.599x463x1.jpg",
+                name: "Frankenstein Girls (Promo)",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 2000",
+                tracks: [
+                    "1. Bitches",
+                    "2. Faggot",
+                    "3. I Hate Jimmy Page",
+                    "4. Planet of the Apes",
+                    "5. Cocaine and Toupees",
+                    "6. Bitches (Radio Version)",
+                    "7. Faggot (Celibate Radio Version)",
+                    "8. I Hate Jimmy Page (Radio Version)",
+                    "9. Planet of the Apes (Amended Version)",
+                    "10. Cocaine And Toupees (Radio Version)"
+                ]
+            },
+            {
+                id: 32,
+                image: "https://images.genius.com/30e5d3c80c3c7430cef0730dd2abb4da.288x450x1.jpg",
+                name: "Bring The Pain / Panty Shot",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1999",
+                tracks: [
+                    "1. Bring the Pain",
+                    "2. Mindless Self Indulgence",
+                    "3. Agents",
+                    "4. Ecnegludni Fles Sseldnim",
+                    "5. Panty Shot"
+                ]
+            },
+            {
+                id: 33,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F2d3a453772f836403a61cf00223c2033.1000x1000x1.png",
+                name: "Crappy Little Demo",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1997",
+                tracks: [
+                    "1. Bitches",
+                    "2. Bring the Pain",
+                    "3. Faggot",
+                    "4. Tornado (Cassingle Version)",
+                    "5. Royally Fucked",
+                    "6. Panty Shot",
+                    "7. Niggers"
+                ]
+            },
+            {
+                id: 34,
+                image: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F3ab8f6fcb994c8d315305b917eff3219.999x999x1.png",
+                name: "Mindless Self‐Indulgence",
+                artist: "Mindless Self Indulgence",
+                year: "Выход сентябрь 18, 1995",
+                tracks: [
+                    "1. Unsociable",
+                    "2. Do Unto Others",
+                    "3. Bed Of Roses",
+                    "4. Do Unto Others, Pt. 2",
+                    "5. Kick",
+                    "6. Unsociable (Extended)",
+                    "7. Kick (Remix)",
+                    "8. Do Unto Others (Clean Version)"
+                ]
+            },
+            {
+                id: 35,
+                image: "https://t2.genius.com/unsafe/300x418/https%3A%2F%2Fimages.genius.com%2Fdb10f448588ed72ed26d32c164e96669.431x600x1.jpg",
+                name: "Do Unto Others (Part II) / Bed Of Roses",
+                artist: "Mindless Self Indulgence",
+                year: "Выпуск 1995",
+                tracks: [
+                    "1. Do Unto Others, Pt. 2",
+                    "2. Bed Of Roses"
+                ]
+            }
+        ];
+
+        // Функция для создания HTML альбома
+        function createAlbumHTML(album) {
+            return `
+                <div class="album-item" data-id="${album.id}">
+                    <div class="album-header">
+                        <img src="${album.image}" alt="${album.name}" class="album-image">
+                        <div class="album-basic-info">
+                            <div class="album-name">${album.name}</div>
+                            <div class="album-artist">${album.artist}</div>
+                            <div class="album-year">${album.year}</div>
+                        </div>
+                        <div class="toggle-arrow">▼</div>
+                    </div>
+                    <div class="tracklist">
+                        <div class="tracklist-content">
+                            <div class="tracklist-title">Треклист:</div>
+                            ${album.tracks.map(track => `<div class="track">${track}</div>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Функция для инициализации страницы
+        function initPage() {
+            const albumsGrid = document.getElementById('albumsGrid');
+            
+            // Создаем HTML для всех альбомов
+            albumsGrid.innerHTML = albums.map(album => createAlbumHTML(album)).join('');
+            
+            // Добавляем обработчики событий для открытия/закрытия треклистов
+            const albumItems = document.querySelectorAll('.album-item');
+            albumItems.forEach(item => {
+                const header = item.querySelector('.album-header');
+                header.addEventListener('click', () => {
+                    item.classList.toggle('open');
+                });
+            });
+        }
+
+        // Инициализируем страницу при загрузке
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>

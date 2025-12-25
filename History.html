@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindless Self Indulgence - История группы</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* МЕНЮ НАВИГАЦИИ */
+        .main-nav {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff1493;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .main-nav a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* АКТИВНАЯ ССЫЛКА (РАЗДЕЛ, В КОТОРОМ НАХОДИМСЯ) */
+        .main-nav a.active {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: #ff1493;
+            margin: 40px 0 60px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* ОСНОВНОЙ ТЕКСТ */
+        .main-text {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+        
+        .highlight {
+            color: #ff1493;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            color: #ff1493;
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            font-weight: 700;
+            border-bottom: 2px solid #ff1493;
+            padding-bottom: 10px;
+        }
+        
+        /* ТАБЛИЦА КОНЦЕРТОВ */
+        .concerts-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+        }
+        
+        .concerts-table th {
+            background-color: #ff1493;
+            color: #000;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .concerts-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+        
+        .concerts-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .concerts-table tr:hover {
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* СЕТКА АЛЬБОМОВ */
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .album-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #333;
+        }
+        
+        .album-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.2);
+        }
+        
+        .album-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 2px solid #ff1493;
+        }
+        
+        .album-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .album-name {
+            color: #ff1493;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .album-artist {
+            color: #aaa;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .album-year {
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        
+        /* РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ */
+        .divider {
+            border: none;
+            height: 2px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #ff1493, transparent);
+            margin: 50px auto;
+        }
+        
+        /* АВТОРСКИЕ ПРАВА */
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-weight: 300;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3rem;
+            }
+            
+            .main-nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+            
+            .albums-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .main-nav {
+                padding: 15px 0;
+            }
+            
+            .main-nav a {
+                display: inline-block;
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .main-text {
+                font-size: 17px;
+            }
+            
+            .albums-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .album-image {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .main-nav {
+                padding: 12px 0;
+            }
+            
+            .main-nav a {
+                display: block;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .main-text {
+                font-size: 16px;
+            }
+            
+            .divider {
+                width: 80%;
+            }
+            
+            .albums-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .concerts-table {
+                font-size: 14px;
+            }
+            
+            .concerts-table th,
+            .concerts-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- МЕНЮ НАВИГАЦИИ -->
+    <nav class="main-nav">
+        <a href="index.html">Главная</a> |
+        <a href="Info.html">Общая информация</a> |
+        <a href="History.html" class="active">История</a> |
+        <a href="Film.html">Фильмография</a> |
+        <a href="Disc.html">Дискография</a> |
+        <a href="Links.html">Источники</a> |
+		<a href="alb.html">Заказать альбом</a> |
+		<a href="concon.html">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+        <h1 class="page-title">История группы</h1>
+        
+        <!-- ОСНОВНОЙ ТЕКСТ -->
+        <div class="main-text">
+            История создания <span class="highlight">Mindless Self Indulgence (MSI)</span> тесно связана с креативной энергией её основателя, <span class="highlight">Джимми Юрина</span>. Группа зародилась в середине 1990-х годов в Нью-Йорке. Джимми Юрин, обладая творческой и экспериментальной натурой, с ранних лет интересовался музыкой, а также цифровыми технологиями, что в будущем станет ключевым элементом в звучании MSI. Название «Mindless Self Indulgence» (буквально переводится как «Бездумное потакание своим желаниям») появилось как отражение философии группы: <span class="highlight">отказ от правил и шаблонов, дерзкий и свободный подход к творчеству</span>. Группа хотела создавать музыку, которая бросала бы вызов не только слушателям, но и устоявшимся традициям музыкальной индустрии.
+            
+            <br><br>В 1995 году Джимми Юрин решил превратить свои эксперименты в полноценный музыкальный проект. На этом этапе к нему присоединился Стив Монтано, известный как <span class="highlight">Steve, Righ?</span>. Вскоре к дуэту примкнули барабанщица <span class="highlight">Китти (Kitty)</span> и басистка <span class="highlight">Линзи Болингер (Lyn-Z)</span>, завершившие состав группы.
+
+            <br><br>Прорывом стал альбом «Tight», выпущенный в 1999 году. Хотя он не получил коммерческого успеха, он помог группе привлечь первых поклонников, заинтересованных их необычным звучанием и провокационным стилем, а релиз альбома «Frankenstein Girls Will Seem Strangely Sexy» (2000) стал ключевым моментом для MSI. Этот альбом демонстрировал уникальный жанровый микс, который стал визитной карточкой группы. Они начали активно гастролировать, привлекая всё больше поклонников на альтернативной музыкальной сцене. Концерты MSI отличались энергичностью и эпатажем, что сделало их настоящим феноменом вживую.
+
+            <br><br>После выхода альбома Alienating Our Audience: Live (2002). Ванессу Y. T. (которая покинула в летом 2001 года с целью стать астронавтом) заменила бас-гитаристка Лин-З (Lyn-Z). Следующий альбом You'll Rebel to Anything (2005) вышел на индастриал-лейбле Metropolis Records в трёх версиях, отличавшихся как содержанием, так и оформлением.
+
+            <br><br>Летом 2007 года группа гастролировала в рамках Revolution Stage Projekt Revolution, музыкального фестиваля, организованного Linkin Park. В январе 2009 года группа возглавила тур Kerrang! Relentless Energy Drink.
+
+            <br><br>Четвёртый альбом If получил высокие оценки ведущих музыкальных изданий. Синглы группы неоднократно возглавляли списки Hot Singles Sales и Dance Singles Sales журнала Billboard. MSI стали завсегдатаями светской рок-хроники после того, как бас-гитаристка (а также художница и дизайнер) Лин-З (англ. Lyn-Z) в 2007 году вышла замуж за Джерарда Уэя из My Chemical Romance.
+
+            <br><br>В декабре 2010 года они выпустили комикс под названием Adventures Into Mindless Self Indulgence о различных историях туров и значимых моментах карьеры группы. Группа выпустила ремастерированную версию CD/DVD своего первого полноформатного альбома Tight в 2011 году под названием «Tighter». Он включал бонус-треки и записи с их ранних дней. 25 октября 2012 года группа анонсировала свой пятый альбом через кампанию Kickstarter. «How I Learned to Stop Giving a Shit and Love Mindless Self Indulgence» был выпущен в мае 2013 года, за ним последовал выпуск синглов «It Gets Worse» в декабре и «Fuck Machine» в январе 2014 года.
+
+            <br><br>Позже в январе 2014 года группа объявила, что они берут перерыв в гастролях. Вскоре в 2015 году группа временно прекратила своё существование.
+
+            <br><br>18 сентября 2015 года Mindless Self Indulgence выпустили «Pink», сборник из 19 песен, записанных между 1990 и 1997 годами Юрином. Альбом включает в себя урезанные и ремастерированные версии песен с одноимённого альбома, аудиодневник, записанный Юрином в июле 1992 года, и каверы на песни Depeche Mode «Personal Jesus» и Duran Duran «Girls on Film».
+
+            <br><br>9 августа 2021 года в Верховный суд Нью-Йорка был подан иск против Джеймса Юринджера (Джимми Юрина) с обвинением в сексуальном насилии над несовершеннолетней, которая утверждает, что состояла в сексуальных отношениях с Юринджером более двух лет — с января 1997 года по июнь 1999 года — начиная с того момента, когда ей было 15 лет, а Юринджеру — 27 лет. 26 марта 2024 года все обвинения против Юринджера были отклонены с предубеждением после того, как все стороны, участвовавшие в иске, согласились на условие об отклонении иска.
+
+            <br><br>20 июня 2024 года группа неожиданно выпустила сборник «MSI B-SIDES vol. 1», в которые вошли ранее не вышедшие треки. Информации касательно даты выхода второй части сборника «MSI B-SIDES vol.2» нет.
+        </div>
+
+        <!-- ГАСТРОЛИ И ШОУ -->
+        <h2 class="section-title">ГАСТРОЛИ И ШОУ</h2>
+        <p style="margin-bottom: 20px; font-size: 18px;">За все время группа дала <span class="highlight">766 концертов</span> в течение <span class="highlight">25 лет</span>.</p>
+        
+        <h3 class="highlight" style="font-size: 1.5rem; margin: 30px 0 20px 0;">Концерты и год:</h3>
+        
+        <table class="concerts-table">
+            <thead>
+                <tr>
+                    <th>Год</th>
+                    <th>Количество концертов</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1995 г.</td><td>1 концерт</td></tr>
+                <tr><td>1997 г.</td><td>1 концерт</td></tr>
+                <tr><td>1998 г.</td><td>5 концертов</td></tr>
+                <tr><td>1999 г.</td><td>54 концерта</td></tr>
+                <tr><td>2000 г.</td><td>83 концерта</td></tr>
+                <tr><td>2001 г.</td><td>2 концерта</td></tr>
+                <tr><td>2002 г.</td><td>59 концертов</td></tr>
+                <tr><td>2003 г.</td><td>62 концерта</td></tr>
+                <tr><td>2004 г.</td><td>6 концертов</td></tr>
+                <tr><td>2005 г.</td><td>109 концертов</td></tr>
+                <tr><td>2006 г.</td><td>45 концертов</td></tr>
+                <tr><td>2007 г.</td><td>89 концертов</td></tr>
+                <tr><td>2008 г.</td><td>122 концерта</td></tr>
+                <tr><td>2009 г.</td><td>43 концерта</td></tr>
+                <tr><td>2010 г.</td><td>1 концерт</td></tr>
+                <tr><td>2012 г.</td><td>37 концертов</td></tr>
+                <tr><td>2013 г.</td><td>57 концертов</td></tr>
+                <tr><td>2014 г.</td><td>27 концертов</td></tr>
+                <tr><td>2015 г.</td><td>1 концерт</td></tr>
+                <tr><td>2017 г.</td><td>1 концерт</td></tr>
+                <tr><td>2020 г.</td><td>1 концерт</td></tr>
+            </tbody>
+        </table>
+
+        <!-- АЛЬБОМЫ И ГОДЫ ИХ ВЫПУСКА -->
+        <h2 class="section-title">АЛЬБОМЫ И ГОДЫ ИХ ВЫПУСКА</h2>
+        
+        <div class="albums-grid">
+            <!-- Альбом 1 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x418/https%3A%2F%2Fimages.genius.com%2Fdb10f448588ed72ed26d32c164e96669.431x600x1.jpg" alt="Do Unto Others (Part II) / Bed Of Roses" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Do Unto Others (Part II) / Bed Of Roses</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1995</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 2 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F3ab8f6fcb994c8d315305b917eff3219.999x999x1.png" alt="Mindless Self‐Indulgence" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Mindless Self‐Indulgence</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 18 сентября, 1995</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 3 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F2d3a453772f836403a61cf00223c2033.1000x1000x1.png" alt="Crappy Little Demo" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Crappy Little Demo</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1997</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 4 -->
+            <div class="album-item">
+                <img src="https://images.genius.com/30e5d3c80c3c7430cef0730dd2abb4da.288x450x1.jpg" alt="Bring The Pain / Panty Shot" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Bring The Pain / Panty Shot</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 5 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F5e8896f98a027c08432be391aa80c983.589x589x1.jpg" alt="Igor's Secret Stash" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Igor's Secret Stash</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 6 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F55940a68bfcd5c47b9cadd1d6f51f6b7.593x593x1.jpg" alt="Radio Pussy (All New Non-Bleep Radio Edits)" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Radio Pussy (All New Non-Bleep Radio Edits)</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 7 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ff68becd5561fce253b76852f2c2d34b0.350x350x1.jpg" alt="Bring the Pain / Tornado" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Bring the Pain / Tornado</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 8 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ff22b6a9db54f76255944bf45784a0606.371x371x1.jpg" alt="Unmastered" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Unmastered</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 9 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F970d3d50a248057ed0ec1dea77684f43.576x576x1.jpg" alt="Untitled" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Untitled</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 10 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fd2353f9892d1a5319bb892822527c3f7.385x599x1.jpg" alt="Bring The Pain / Tight" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Bring The Pain / Tight</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 11 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ff048dfbfafd810d8f8d07f0aa498ac73.600x436x1.jpg" alt="Unmastered Studio Bootlegs 1/20/99" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Unmastered Studio Bootlegs 1/20/99</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск январь 20, 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 12 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Ffd310634b8f324964188077554297354.1000x1000x1.png" alt="Tight" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Tight</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск апрель 20, 1999</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 13 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F5a58a3d6df98e3e358b6a115253f0d35.600x499x1.jpg" alt="Planet Of The Apes" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Planet Of The Apes</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 2000</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 14 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F0c417a8057f548e1a0ea6aff422a695e.1000x1000x1.png" alt="Frankenstein Girls Will Seem Strangely Sexy" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Frankenstein Girls Will Seem Strangely Sexy</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск февраль 22, 2000</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 15 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F02c640b0db343c3ade0e18b9267c7144.478x478x1.jpg" alt="Bitches / Molly" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Bitches / Molly</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск апрель 4, 2000</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 16 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ff751719eeba9e4b82ea9301fc5891449.700x700x1.jpg" alt="Thank God" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Thank God</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск январь 1, 2002</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 17 -->
+            <div class="album-item">
+                <img src="https://images.genius.com/ce17b1d1be78badcc67d0134c2b12358.240x240x1.jpg" alt="Alienating Our Audience" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Alienating Our Audience</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск октябрь 8, 2002</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 18 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F1cae83e4166819c1840caa2914da9483.1000x1000x1.png" alt="Despierta Los Niños" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Despierta Los Niños</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск октябрь 31, 2003</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 19 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fbc121e19e34f4bf652357159ff37c0c3.1000x1000x1.png" alt="You'll Rebel to Anything" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">You'll Rebel to Anything</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск апрель 12, 2005</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 20 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fb8b81fa7d636fb6bc05d1e9e91a5e7e8.640x640x1.jpg" alt="You'll Rebel To Anything (Clean Version)" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">You'll Rebel To Anything (Clean Version)</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск апрель 12, 2005</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 21 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fe148240c0d4da85c3bb11e4dea060326.1000x1000x1.png" alt="Straight To Video (Remixes)" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Straight To Video (Remixes)</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск март 7, 2006</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 22 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F43345ba3161a0a7e98de28f853e2747a.642x642x1.png" alt="Another Mindless Rip-Off" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Another Mindless Rip-Off</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск декабрь 5, 2006</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 23 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fe8761e8f061a3fc7b36265a0d0bf8299.1000x1000x1.png" alt="You'll Rebel To Anything (Expanded and Remastered)" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">You'll Rebel To Anything (Expanded and Remastered)</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск январь 22, 2008</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 24 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fd86ff678e89f8a9d894766ee9db434b3.595x595x1.jpg" alt="Mastermind" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Mastermind</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск февраль 21, 2008</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 25 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2Fdb345d97b4651ce717f01896cf12f9dd.999x999x1.png" alt="If" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">If</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск апрель 29, 2008</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 26 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F7aabc807a4a791e6850a6a1e8c3c5b9f.600x600x1.jpg" alt="3 S'" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">3 S'</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск апрель 29, 2008</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 27 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fe7caced4fa17f1f52663d12c9c7719d9.640x640x1.jpg" alt="Evening Wear/Mark David Chapman" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Evening Wear/Mark David Chapman</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск январь 20, 2009</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 28 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ff7870ffe60a0e72c8a94ca3cefa18f0b.500x500x1.png" alt="<3" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">&lt;3</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск февраль 14, 2010</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 29 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/772x0/https%3A%2F%2Fimages.genius.com%2Fb272bc3eef71f30cab0957f3eb91f749.640x640x1.jpg" alt="Tighter" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Tighter</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск апрель 26, 2011</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 30 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fd9d42db8af5af2d68e24e61b09f3287a.575x575x1.jpg" alt="It Gets Worse / Ala Mode" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">It Gets Worse / Ala Mode</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск 2013</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 31 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F31d11219c312cf3c22341b8863d60a6c.1000x1000x1.png" alt="How I Learned To Stop Giving A Shit And Love Mindless Self Indulgence" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">How I Learned To Stop Giving A Shit And Love Mindless Self Indulgence</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск май 14, 2013</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 32 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fca6b7c23139c84f6edcb42bb6e9e1c22.700x700x1.jpg" alt="It Gets Worse" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">It Gets Worse</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск декабрь 3, 2013</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 33 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F4a72bf05addee6ab9b6455d0e247ed0e.640x640x1.jpg" alt="Fuck Machine" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">Fuck Machine</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск январь 14, 2014</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 34 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F78ea87c225f3a1fde812bc3350b8f5c3.1000x1000x1.png" alt="PINK" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">PINK</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск сентябрь 18, 2015</div>
+                </div>
+            </div>
+            
+            <!-- Альбом 35 -->
+            <div class="album-item">
+                <img src="https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F5c32d91be3764ce5f4f6cf81b3bed1bb.1000x1000x1.png" alt="MSI B-SIDES vol.1" class="album-image">
+                <div class="album-info">
+                    <div class="album-name">MSI B-SIDES vol.1</div>
+                    <div class="album-artist">Mindless Self Indulgence</div>
+                    <div class="album-year">Выпуск июнь 15, 2024</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ -->
+        <hr class="divider">
+
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <footer class="copyright">
+            <p>&copy; Все права защищены. Е. С. Глухова, БЭР2302. 2025.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindless Self Indulgence - Общая информация</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* МЕНЮ НАВИГАЦИИ */
+        .main-nav {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff1493;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .main-nav a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* АКТИВНАЯ ССЫЛКА (РАЗДЕЛ, В КОТОРОМ НАХОДИМСЯ) */
+        .main-nav a.active {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: #ff1493;
+            margin: 40px 0 60px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* СЕКЦИЯ С ТЕКСТОМ И КАРТИНКОЙ РЯДОМ */
+        .text-image-section {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+        
+        .text-content {
+            flex: 1;
+        }
+        
+        .side-image {
+            flex: 0 0 400px;
+            max-width: 400px;
+        }
+        
+        /* ОСНОВНОЙ ТЕКСТ */
+        .main-text {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .highlight {
+            color: #ff1493;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            color: #ff1493;
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            font-weight: 700;
+            border-bottom: 2px solid #ff1493;
+            padding-bottom: 10px;
+        }
+        
+        /* КАРТИНКИ */
+        .image-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .image-with-caption {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #333;
+        }
+        
+        .side-image .image-with-caption {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        
+        .image-caption {
+            color: #aaa;
+            font-size: 14px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* ИНФОРМАЦИЯ ОБ УЧАСТНИКАХ */
+        .member-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid #ff1493;
+        }
+        
+        .member-name {
+            color: #ff1493;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .member-details {
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        
+        /* РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ */
+        .divider {
+            border: none;
+            height: 2px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #ff1493, transparent);
+            margin: 50px auto;
+        }
+        
+        /* АВТОРСКИЕ ПРАВА */
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-weight: 300;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3rem;
+            }
+            
+            .main-nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+            
+            .image-row {
+                gap: 20px;
+            }
+            
+            .text-image-section {
+                flex-direction: column;
+            }
+            
+            .side-image {
+                flex: 0 0 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .main-nav {
+                padding: 15px 0;
+            }
+            
+            .main-nav a {
+                display: inline-block;
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .image-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .main-text {
+                font-size: 17px;
+            }
+            
+            .text-image-section {
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .main-nav {
+                padding: 12px 0;
+            }
+            
+            .main-nav a {
+                display: block;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .member-info {
+                padding: 20px;
+            }
+            
+            .main-text {
+                font-size: 16px;
+            }
+            
+            .divider {
+                width: 80%;
+            }
+            
+            .side-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- МЕНЮ НАВИГАЦИИ -->
+    <nav class="main-nav">
+        <a href="index.html">Главная</a> |
+        <a href="Info.html" class="active">Общая информация</a> |
+        <a href="History.html">История</a> |
+        <a href="Film.html">Фильмография</a> |
+        <a href="Disc.html">Дискография</a> |
+        <a href="Links.html">Источники</a> |
+		<a href="alb.html">Заказать альбом</a> |
+		<a href="concon.html">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+        <h1 class="page-title">Общая информация</h1>
+        
+        <!-- СЕКЦИЯ С ТЕКСТОМ И КАРТИНКОЙ -->
+        <div class="text-image-section">
+            <div class="text-content">
+                <div class="main-text">
+                    <span class="highlight">Mindless Self Indulgence (MSI)</span> — одна из самых нестандартных и эксцентричных групп, оставивших яркий след на музыкальной сцене конца XX — начала XXI века. Образовавшись в 1990-х в Нью-Йорке, они стали знаковым явлением в таких жанрах, как <span class="highlight">индустриальный рок, электроника и панк</span>. Их культовый статус обусловлен уникальным звучанием, провокационными текстами и дерзким визуальным стилем, который составляет неотъемлемую часть их идентичности. Визуальные элементы, такие как обложки альбомов и клипы играют такую же важную роль, как и музыкальные эксперименты, становясь объектом активного обсуждения и влияния на культурные процессы. Именно поэтому исследование визуальной составляющей творчества MSI представляется актуальным и важным для понимания механизмов их успеха.
+
+                    <br><br>Анализ затрагивает также музыкальные и, в основном, визуальные эксперименты. Особый акцент сделан на изучении музыкальных альбомов и видеоклипов, где раскрываются характерные черты их эстетики. Важно также отметить роль культурных движений, таких как <span class="highlight">уличное искусство и граффити</span>, которые повлияли на формирование их образа и стиля.
+                </div>
+            </div>
+            
+            <div class="side-image">
+                <img src="https://files.mediiia.ru/projectimages/1031/c62a9d92e89242858114e1252e07acb7/99ed9cb9164a466a9948d2d8a3e3c5e2450x632.jpg" 
+                     alt="Mindless Self Indulgence" 
+                     class="image-with-caption">
+            </div>
+        </div>
+
+        <!-- УЧАСТНИКИ ГРУППЫ -->
+        <h2 class="section-title">УЧАСТНИКИ ГРУППЫ</h2>
+        
+        <div class="image-row">
+            <img src="https://files.mediiia.ru/postimages/16091/0ffb33e404ae4d1d82849a41f278244f/1daac737c1c140bcba4229b165b0be60_orig.jpg" 
+                 alt="Джимми Юрин 1" 
+                 class="image-with-caption">
+            <img src="https://files.mediiia.ru/postimages/16091/2ad25ee0c5b9417090cddd6e53a20202/e03ca02159bf434084a30d955b782ad0450x641.jpg" 
+                 alt="Джимми Юрин 2" 
+                 class="image-with-caption">
+        </div>
+        <p class="image-caption" style="text-align: center;">Джимми Юрин, солист группы MSI</p>
+
+        <div class="member-info">
+            <h3 class="member-name">Джимми Юрин (Jimmy Urine)</h3>
+            <div class="member-details">
+                <p><strong>Настоящее имя:</strong> Джеймс Эван Юриниак</p>
+                <p><strong>Роль в группе:</strong> Вокалист, автор песен, программирование, лидер группы.</p>
+                <p><strong>Дата рождения:</strong> 7 сентября 1969 года.</p>
+            </div>
+            <p class="highlight"><strong>Биография и вклад:</strong></p>
+            <p>Основатель группы и ключевая фигура MSI. Джимми вырос в Нью-Йорке в музыкальной среде, с юных лет увлекался панком и электроникой. До создания MSI он экспериментировал с разными жанрами и записывал свои треки в домашней студии. Обладает характерным высоким вокалом и агрессивной подачей, которые стали визитной карточкой MSI. В текстах и сценическом поведении использует провокационный юмор и сарказм, что отражает его отношение к культуре и обществу.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://files.mediiia.ru/postimages/16092/24b6922a9e5341fca741b522a8afae09/6b04d009b70b4a1a8efd6dc48161f541_orig.jpg" 
+                 alt="Стив, Райт?" 
+                 class="image-with-caption">
+            <p class="image-caption">Стив, Райт?, гитарист группы MSI</p>
+        </div>
+
+        <div class="member-info">
+            <h3 class="member-name">Стив, Райт? (Steve, Righ?)</h3>
+            <div class="member-details">
+                <p><strong>Настоящее имя:</strong> Стивен Монтано.</p>
+                <p><strong>Роль в группе:</strong> Гитарист, бэк-вокалист.</p>
+                <p><strong>Дата рождения:</strong> 8 мая 1975 года.</p>
+            </div>
+            <p class="highlight"><strong>Биография и вклад:</strong></p>
+            <p>Стив присоединился к MSI в начале их карьеры, став вторым по старшинству участником. Его псевдоним — отсылка к религиозным мотивам и одновременно ирония в духе группы. Обладает ярким сценическим образом, часто взаимодействует с фанатами во время концертов. Его стиль игры сочетает панковую агрессию с экспериментальной обработкой гитарного звука, что помогает создавать энергию, присущую MSI.</p>
+        </div>
+
+        <div class="image-row">
+            <img src="https://files.mediiia.ru/postimages/16089/16392fe1c1e5471ba0ab15e62bc8fb77/5c090ba53f4441ac92e66433d25f4add600x741.jpg" 
+                 alt="Китти 1" 
+                 class="image-with-caption">
+            <img src="https://files.mediiia.ru/postimages/16089/778d6bf6ca17405eb7c3dc156ac5101c/af03edfad05e47e0acc3fae8f3707f0a_orig.jpg" 
+                 alt="Китти 2" 
+                 class="image-with-caption">
+        </div>
+        <p class="image-caption" style="text-align: center;">Китти, барабанщица группы MSI</p>
+
+        <div class="member-info">
+            <h3 class="member-name">Кити (Kitty)</h3>
+            <div class="member-details">
+                <p><strong>Настоящее имя:</strong> Дженнифер Данн.</p>
+                <p><strong>Роль в группе:</strong> Ударница.</p>
+                <p><strong>Дата рождения:</strong> 1 августа 1979 года.</p>
+            </div>
+            <p class="highlight"><strong>Биография и вклад:</strong></p>
+            <p>Кит стала барабанщицей MSI в 1997 году. Она самоучка и обладает уникальной техникой игры, которая сочетает электронику и живые барабаны. Её стиль варьируется от быстрых, механических ритмов до более сложных экспериментальных паттернов, что идеально подходит для гибридного звучания MSI.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://files.mediiia.ru/postimages/16089/81503862f4384cdb971497737de6159d/5058b088e2704bce960d9ffc585d04df900x1148.png" 
+                 alt="Лин-З" 
+                 class="image-with-caption">
+            <p class="image-caption">Лин-З, бас-гитаристка группы MSI</p>
+        </div>
+
+        <div class="member-info">
+            <h3 class="member-name">Лин-З (Lyn-Z)</h3>
+            <div class="member-details">
+                <p><strong>Настоящее имя:</strong> Линдси Энн Уэй (урожденная Баллард).</p>
+                <p><strong>Роль в группе:</strong> Басистка, бэк-вокалистка.</p>
+                <p><strong>Дата рождения:</strong> 21 мая 1976 года.</p>
+            </div>
+            <p class="highlight"><strong>Биография и вклад:</strong></p>
+            <p>Лин-З присоединилась к MSI в 2001 году после ухода басиста Ванессы Ивонн. Родом из Шотландии, Лин-З выросла в музыкальной среде и с детства интересовалась панком. Её басовые партии отличаются резкими и пронзительными ритмами, добавляя глубины общему звучанию MSI. Замужем за Джерардом Уэем, фронтменом группы My Chemical Romance, что дополнительно привлекло внимание к её персоне. Примечательно, что она практически не умела играть на бас-гитаре, когда пришла на прослушивание, чтобы попасть в группу. Её приняли сразу же после того, как она устроила сумасшедшее фаер-шоу прямо на прослушивании. В бюстгальтере она пронесла с собой Бакарди, в прическе спрятала спички. Она отхлебнула немного Бакарди и дыхнула на зажженные спички. В процессе она даже немного подпалила солиста, но группа была так восхищена, что приняла ее к себе.</p>
+        </div>
+
+        <div class="image-row">
+            <img src="https://files.mediiia.ru/postimages/16088/862da1104b0f466fb0d876a8cffb88ba/116ec55c71a04eea802aabdc81ac2f16600x600.jpg" 
+                 alt="Фирменный трюк Лин-З 1" 
+                 class="image-with-caption">
+            <img src="https://files.mediiia.ru/postimages/16088/953adccbcd774dd6a2b12592bfa16eb1/670a30055bda4f77924e9b3fa57ab0ee450x628.png" 
+                 alt="Фирменный трюк Лин-З 2" 
+                 class="image-with-caption">
+        </div>
+        <p class="image-caption" style="text-align: center;">Фирменный трюк Лин-З</p>
+        <p style="text-align: center; margin-top: 20px;">Она обладает эксцентричной сценической манерой — часто исполняет акробатические элементы (например, стойки на спине или кувырки), что стало её фирменной фишкой.</p>
+
+        <!-- ВИЗУАЛЬНЫЕ КОНЦЕПЦИИ -->
+        <h2 class="section-title">ВИЗУАЛЬНЫЕ КОНЦЕПЦИИ И ЭСТЕТИКА</h2>
+        
+        <h3 class="highlight" style="font-size: 1.8rem; margin: 40px 0 20px 0;">Обложки альбомов</h3>
+
+        <div class="image-container">
+            <img src="https://files.mediiia.ru/postimages/16096/ff86c5cdb45e4b5692851c2344c3f874/843751931fcb443bba9989b606e9cda9_orig.png" 
+                 alt="Демо альбом 1995" 
+                 class="image-with-caption">
+            <p class="image-caption">Демо альбом «Mindless Self-Indulgence» 1995 г</p>
+        </div>
+        <p>До официального дебютного альбома «Tight» (1999) в 1995 году был создан альбом под названием «Mindless Self-Indulgence». Этот альбом стал своеобразным началом для группы и демонстрацией их экспериментов с жанрами. Визуально обложка сильно отличается от остальных обложек группы. Это обоснованно тем, что MSI находились в поиске себя и своего стиля. Однако даже на этом этапе просматриваются немного мрачные мотивы и сюрреализм.</p>
+
+        <div class="image-container">
+            <img src="https://files.mediiia.ru/postimages/16255/f2fdcd9115fc499bbc2e0f1ef3b99d25/a8d2855bb8bc46b59628db89338e1429_orig.png" 
+                 alt="Альбом Tight 1999" 
+                 class="image-with-caption">
+            <p class="image-caption">Обложка альбома «Tight» 1999 г</p>
+        </div>
+        <p>В 1999 году MSI официально выпустили свой первый альбом «Tight», который стал настоящим манифестом их творчества, который задал основу их уникального стиля. Альбом объединил элементы панк-рока, хип-хопа и электроники, создавая уникальное звучание, которое невозможно было спутать с чем-либо другим. Дизайн самой обложки довольно простой и минималистичный, но довольно провокационный, так как расположение его элементов напоминают женское нижнее белье. Таким образом MSI почти с самого начала своей карьеры заявляют о себе как о дерзкой, контркультурной группе.</p>
+
+        <div class="image-container">
+            <img src="https://files.mediiia.ru/postimages/16097/6c0cd277a3184ac390178a66fece64a0/61c6f62125a149398564f0cd5f0faebf_orig.jpg" 
+                 alt="Альбом Frankenstein Girls" 
+                 class="image-with-caption">
+            <p class="image-caption">Обложка альбома «Frankenstein Girls Will Seem Strangely Sexy» 2000 г</p>
+        </div>
+        <p>Обложка этого альбома представляет собой одно из самых запоминающихся визуальных решений MSI. Она выполнена в яркой, мультяшной стилистике с элементами гротеска. Искажённые и гиперболизированные фигуры персонажей создают ощущение сюрреалистичного мира. Обложка вдохновлена как эстетикой комиксов, так и стилистикой графических романов, таких как Tank Girl. Свое влияние оказала японская культура аниме, творчество таких групп, как Gorillaz.</p>
+
+        <div class="image-row">
+            <img src="https://files.mediiia.ru/postimages/16119/622f632822824f9f9ed6a2c46e30a957/ae25daa6db1f40e48d5cbd8234a3d941_orig.png" 
+                 alt="Альбом If 1" 
+                 class="image-with-caption">
+            <img src="https://files.mediiia.ru/postimages/16119/e5b5e8e804344999a0de019e1548be0b/540d3fa4a14443828ecb0550bf79a4f4_orig.png" 
+                 alt="Альбом If 2" 
+                 class="image-with-caption">
+        </div>
+        <p class="image-caption" style="text-align: center;">Обложка альбома «If» 2008г / Обложка ограниченного издания «If» на CD 2008 г</p>
+        <p>Альбом «If» примечателен тем, что имеет целых 4 варианта обложки и все они имеют свои особенности. У классической версии довольно минималистичный дизайн с ярким акцентом в виде подтека крови. Слово «If» (в переводе с английского «если») является мощным триггером для размышлений, так как оно открывает бесконечное количество сценариев, вопросов и возможностей. Такая неопределенность соответствует манере MSI играть с ожиданиями слушателей. Кровавый подтёк добавляет элемент шока, вызывая у зрителя ассоциации с насилием, драмой или конфронтацией, что подчеркивает провокационную натуру группы.</p>
+        <p>Дизайн обложки для ограниченного издания на CD также имеет свои особенности. Рука с пальцевыми куклами, изображающими участников группы, создает ощущение карикатуры и самоиронии. Это отражает характерный стиль MSI, которые часто шутят над собой и окружающими. Каждая кукла на пальцах выглядит уникально, что подчеркивает индивидуальность каждого участника и их вклад в творчество группы. Дизайн кукол мог быть стилизован в соответствии с их сценическими образами или чертами личности. Использование пальцевых кукол намекает на детские игрушки, что контрастирует с откровенной и часто провокационной тематикой их песен. Это сочетание несоответствий — фирменная черта MSI, создающая одновременно забавное и острое впечатление.</p>
+
+        <!-- РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ -->
+        <hr class="divider">
+
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <footer class="copyright">
+            <p>&copy; Все права защищены. Е. С. Глухова, БЭР2302. 2025.</p>
+        </footer>
+    </div>
+</body>
+</html>

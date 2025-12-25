@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindless Self Indulgence - Фильмография</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* МЕНЮ НАВИГАЦИИ */
+        .main-nav {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff1493;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .main-nav a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+        
+        /* АКТИВНАЯ ССЫЛКА (РАЗДЕЛ, В КОТОРОМ НАХОДИМСЯ) */
+        .main-nav a.active {
+            color: #ff1493;
+            background-color: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: #ff1493;
+            margin: 40px 0 60px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* ОСНОВНОЙ ТЕКСТ */
+        .main-text {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+        
+        .highlight {
+            color: #ff1493;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            color: #ff1493;
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            font-weight: 700;
+            border-bottom: 2px solid #ff1493;
+            padding-bottom: 10px;
+        }
+        
+        /* ФИЛЬМЫ */
+        .film-container {
+            margin: 50px 0;
+        }
+        
+        .film-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+        
+        .film-header {
+            background-color: rgba(255, 20, 147, 0.1);
+            padding: 20px;
+            border-bottom: 2px solid #ff1493;
+        }
+        
+        .film-title {
+            color: #ff1493;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .film-content {
+            padding: 30px;
+        }
+        
+        .film-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #333;
+            margin: 20px 0;
+            display: block;
+        }
+        
+        .film-video {
+            width: 100%;
+            max-width: 600px;
+            height: 338px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .film-caption {
+            color: #aaa;
+            font-size: 14px;
+            margin-top: 10px;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .film-description {
+            font-size: 17px;
+            line-height: 1.7;
+            margin: 20px 0;
+        }
+        
+        .video-link {
+            display: inline-block;
+            background-color: #ff1493;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .video-link:hover {
+            background-color: #ff69b4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+        
+        /* ИНФОРМАЦИОННЫЕ БЛОКИ */
+        .info-block {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid #ff1493;
+        }
+        
+        /* РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ */
+        .divider {
+            border: none;
+            height: 2px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #ff1493, transparent);
+            margin: 50px auto;
+        }
+        
+        /* АВТОРСКИЕ ПРАВА */
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-weight: 300;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3rem;
+            }
+            
+            .main-nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+            
+            .film-video {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .main-nav {
+                padding: 15px 0;
+            }
+            
+            .main-nav a {
+                display: inline-block;
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .main-text {
+                font-size: 17px;
+            }
+            
+            .film-title {
+                font-size: 1.6rem;
+            }
+            
+            .film-video {
+                height: 250px;
+            }
+            
+            .film-content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .main-nav {
+                padding: 12px 0;
+            }
+            
+            .main-nav a {
+                display: block;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .main-text {
+                font-size: 16px;
+            }
+            
+            .divider {
+                width: 80%;
+            }
+            
+            .film-title {
+                font-size: 1.4rem;
+            }
+            
+            .film-video {
+                height: 200px;
+            }
+            
+            .film-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- МЕНЮ НАВИГАЦИИ -->
+    <nav class="main-nav">
+        <a href="index.html">Главная</a> |
+        <a href="Info.html">Общая информация</a> |
+        <a href="History.html">История</a> |
+        <a href="Film.html" class="active">Фильмография</a> |
+        <a href="Disc.html">Дискография</a> |
+        <a href="Links.html">Источники</a> |
+		<a href="alb.html">Заказать альбом</a> |
+		<a href="concon.html">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+        <h1 class="page-title">Фильмы</h1>
+        
+        <!-- ВВЕДЕНИЕ -->
+        <div class="main-text">
+            Фильмография группы <span class="highlight">Mindless Self Indulgence</span> представляет собой коллекцию уникальных видео-релизов, концертных записей и документальных материалов, которые отражают их энергичный стиль и провокационную эстетику. Каждое видео является не просто записью выступления, а полноценным художественным произведением, демонстрирующим творческий подход группы к визуальному оформлению своего творчества.
+        </div>
+
+        <!-- ФИЛЬМ 1: OUR PAIN YOUR GAIN -->
+        <div class="film-container">
+            <div class="film-item">
+                <div class="film-header">
+                    <h2 class="film-title">Our Pain Your Gain</h2>
+                </div>
+                <div class="film-content">
+                    <img src="https://mindlessselfindulgence.com/wp-content/uploads/2013/12/msi-our-pain-your-gain.jpg" 
+                         alt="Our Pain Your Gain" 
+                         class="film-image">
+                    <p class="film-caption">выпуск сентябрь 11, 2007</p>
+                    
+                    <div class="info-block">
+                        <p class="film-description">
+                            <span class="highlight">Записано за три вечера в Webster Hall, Нью-Йорк.</span> Включает более двадцати песен, исполненных вживую. Дополнительные материалы: музыкальные клипы, видеоролики, победившие в конкурсе STV, неизданные концертные фотографии, иллюстрированные раскадровки и интервью A.D.D. с фанатами.
+                        </p>
+                        
+                        <p class="film-description">
+                            Этот релиз стал культовым среди поклонников группы, так как он не только демонстрирует энергию живых выступлений MSI, но и предоставляет уникальный взгляд за кулисы творческого процесса. Видео захватывает атмосферу нью-йоркских концертов и демонстрирует характерное взаимодействие группы с аудиторией.
+                        </p>
+                    </div>
+                    
+                    <!-- ВИДЕО С САЙТА YANDEX -->
+                    <h3 class="highlight" style="margin: 30px 0 15px 0;">Трейлер / Фрагмент фильма:</h3>
+                    <iframe class="film-video" 
+                            src="https://yandex.ru/video/embed/18206173844880455506?text=Mindless%20Self%20Indulgence%3A%20Our%20Pain%2C%20Your%20Gain%20%282007%29&path=yandex_search&parent-reqid=1766415494717570-11080816607789977915-balancer-l7leveler-kubr-yp-sas-249-BAL&from_type=carousel" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    
+                    <p class="film-caption">Mindless Self Indulgence: Our Pain, Your Gain (2007)</p>
+                    
+                    <a href="https://yandex.ru/video/preview/18206173844880455506?text=Mindless%20Self%20Indulgence%3A%20Our%20Pain%2C%20Your%20Gain%20%282007%29&path=yandex_search&parent-reqid=1766415494717570-11080816607789977915-balancer-l7leveler-kubr-yp-sas-249-BAL&from_type=carousel" 
+                       class="video-link" 
+                       target="_blank">
+                       Смотреть на Яндекс.Видео
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
+        <h2 class="section-title">ДРУГИЕ ВИДЕО-МАТЕРИАЛЫ</h2>
+        
+        <div class="info-block">
+            <h3 class="highlight" style="margin-bottom: 15px;">Музыкальные клипы</h3>
+            <p class="film-description">
+                За всю свою карьеру <span class="highlight">Mindless Self Indulgence</span> выпустили множество музыкальных клипов, которые стали неотъемлемой частью их творческого наследия. Каждый клип отражает уникальный визуальный стиль группы, сочетающий элементы панк-эстетики, цифрового арта и провокационной образности.
+            </p>
+            
+            <p class="film-description">
+                Особого внимания заслуживают клипы на песни <span class="highlight">"Shut Me Up"</span>, <span class="highlight">"Straight to Video"</span>, <span class="highlight">"Fuck Machine"</span> и <span class="highlight">"It Gets Worse"</span>. Эти работы демонстрируют эволюцию визуального языка группы и их эксперименты с различными форматами и техниками.
+            </p>
+        </div>
+        
+        <div class="info-block">
+            <h3 class="highlight" style="margin-bottom: 15px;">Концертные записи и тур-документалки</h3>
+            <p class="film-description">
+                Помимо официальных релизов, существует множество фанатских записей концертов и документальных материалов о турах группы. Эти записи ценны тем, что они сохраняют атмосферу живых выступлений MSI, которые славились своей энергией и интерактивностью с аудиторией.
+            </p>
+            
+            <p class="film-description">
+                Группа активно взаимодействовала со своей фанатской базой, что привело к созданию уникальной архивной коллекции видео-материалов, доступных на различных платформах и фанатских ресурсах.
+            </p>
+        </div>
+        
+        <div class="info-block">
+            <h3 class="highlight" style="margin-bottom: 15px;">Короткометражные фильмы и эксперименты</h3>
+            <p class="film-description">
+                <span class="highlight">MSI</span> также экспериментировали с форматом короткометражного кино, создавая видео-работы, которые выходили за рамки традиционных музыкальных клипов. Эти работы часто содержали социальную сатиру, абсурдистский юмор и визуальные эксперименты, что соответствовало общей эстетике группы.
+            </p>
+            
+            <p class="film-description">
+                Многие из этих работ были созданы в сотрудничестве с независимыми режиссерами и видео-художниками, что привело к созданию уникального визуального наследия, которое продолжает вдохновлять новых художников и музыкантов.
+            </p>
+        </div>
+
+        <!-- РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ -->
+        <hr class="divider">
+
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <footer class="copyright">
+            <p>&copy; Все права защищены. Е. С. Глухова, БЭР2302. 2025.</p>
+        </footer>
+    </div>
+</body>
+</html>
